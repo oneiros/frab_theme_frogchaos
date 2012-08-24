@@ -1,0 +1,6 @@
+= FrabThemeFrogchaos
+
+This is a (very incomplete) port of pentabarfs' public schedule layout
+to frab.
+
+It is mainly meant to demo frab's new extension capabilities.

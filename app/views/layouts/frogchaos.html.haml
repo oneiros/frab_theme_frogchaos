@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %metar{:'http-equiv'=>'Content-Type',:content=>'text/html; charset=utf-8'}
+    %title= "#{@conference.acronym}: #{@conference.title} schedule"
+    = stylesheet_link_tag 'frogchaos'
+    = stylesheet_link_tag public_schedule_style_path(:format => :css)
+
+  %body
+    #conference-logo.noprint
+      &nbsp;
+    #menu.noprint
+      %ul
+        %li
+          = link_to public_schedule_index_path do
+            %span.normal Index
+        - @conference.days.each_with_index do |day, index|
+          %li
+            = link_to public_schedule_path(:date => day) do
+              %span.normal= "#{day.to_s} - Day #{index + 1}"
+        %li
+          = link_to public_speakers_path do
+            %span.normal Speakers
+        %li
+          = link_to public_events_path do
+            %span.normal Events
+        
+    #content
+      %p.release= @conference.acronym
+      %p.intro
+        %strong= @conference.title
+      = yield 
